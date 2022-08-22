@@ -8,3 +8,14 @@ rect.size = (subtitle.text?.size(withAttributes: [NSAttributedString.Key.font: U
 subtitle.translatesAutoresizingMaskIntoConstraints = false
 print("yilmaz \(rect.width)")
 subtitle.trailingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -rect.width).isActive = true
+
+
+func UILabelWidthBasedOnTextLength(with label: UILabel) -> CGFloat? {
+    guard let text = label.text,
+          let font = UIFont(name: label.font.fontName,
+                            size: label.font.pointSize) else { return nil }
+
+    var frame: CGRect = label.frame
+    frame.size = text.size(withAttributes: [NSAttributedString.Key.font: font])
+    return frame.width
+}

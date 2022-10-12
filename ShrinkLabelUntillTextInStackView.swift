@@ -19,3 +19,10 @@ func UILabelWidthBasedOnTextLength(with label: UILabel) -> CGFloat? {
     frame.size = text.size(withAttributes: [NSAttributedString.Key.font: font])
     return frame.width
 }
+
+
+[titleLabel, subtitleLabel].forEach(){
+    $0.numberOfLines = 0
+    $0.lineBreakMode = .byWordWrapping
+    $0.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
+}

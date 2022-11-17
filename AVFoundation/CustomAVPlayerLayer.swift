@@ -191,3 +191,13 @@ class CustomAVPlayerLayer: UIView {
         })
     }
 }
+
+/*
+playerController = AVPlayerViewController()
+playerController?.player = player
+
+addChild(playerController!)
+playerController?.view.frame = viewForPlayer.bounds
+viewForPlayer.addSubview((playerController?.view)!)
+playerController?.didMove(toParent: self)
+*/

@@ -103,6 +103,11 @@ class CustomAVPlayerLayer: UIView {
                          name: .AVPlayerItemDidPlayToEndTime,
                          object: player?.currentItem)
         
+        NotificationCenter.default.addObserver(self,
+                                       selector: #selector(didEnterBackground),
+                                       name: UIApplication.didEnterBackgroundNotification,
+                                       object: nil)
+        
         player?.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
         playerLayer = AVPlayerLayer(player: player)
         playerLayer?.videoGravity = .resize
@@ -189,6 +194,10 @@ class CustomAVPlayerLayer: UIView {
             self.timeSlider.value = Float(currentItem.currentTime().seconds)
             self.currentTimeLabel.text = self.getTimeString(from: currentItem.currentTime())
         })
+    }
+    
+    @objc private func didEnterBackground() {
+        player?.pause()
     }
 }
 

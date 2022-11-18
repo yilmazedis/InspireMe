@@ -1,6 +1,8 @@
 import AVFoundation
 import UIKit
 
+// https://www.youtube.com/watch?v=_Xk4i44sq38&ab_channel=VasilBlanco-Nunev
+
 class CustomAVPlayerLayer: UIView {
     
     lazy var currentTimeLabel: UILabel = {

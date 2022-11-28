@@ -1,9 +1,19 @@
 enum AppImage {
     
     case iconLogo
+    case iconPassword
     
     var image: UIImage {
         guard let image = UIImage(named: String(describing: self)) else {
+            assertionFailure("Image not found with name: \(String(describing: self))")
+            return UIImage()
+        }
+
+        return image
+    }
+    
+    var systemImage: UIImage {
+        guard let image = UIImage(systemName: String(describing: self)) else {
             assertionFailure("Image not found with name: \(String(describing: self))")
             return UIImage()
         }

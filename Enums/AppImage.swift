@@ -12,9 +12,11 @@ enum AppImage {
         return image
     }
     
+    @available(iOS 13.0, *)
+    @available(iOSApplicationExtension 13.0, *)
     var systemImage: UIImage {
         guard let image = UIImage(systemName: String(describing: self)) else {
-            assertionFailure("Image not found with name: \(String(describing: self))")
+            assertionFailure("Image not found with systemName: \(String(describing: self))")
             return UIImage()
         }
 

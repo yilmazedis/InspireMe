@@ -10,7 +10,7 @@ class CustomSegmentedView: UIView {
         newValue.spacing = 8
         newValue.axis = .horizontal
         newValue.alignment = .fill
-        newValue.distribution = .fill
+        newValue.distribution = .fillEqually
         newValue.isOpaque = true
         return newValue
     }()

@@ -1,15 +1,14 @@
 //
-//  ViewController.swift
-//  ExampleProject
+//  Popup.swift
+//  CustomViewWorking
 //
-//  Created by yilmaz edis on 20.09.2022.
+//  Created by yilmaz on 12.12.2022.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-    
-    private lazy var scrollView: UIScrollView = {
+class BasePopupViewController: UIViewController {
+    lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.backgroundColor = .white
         sv.layer.cornerRadius = 16
@@ -18,10 +17,63 @@ class ViewController: UIViewController {
         return sv
     }()
     
-    private lazy var contentView: UIView = {
+    lazy var contentView: UIView = {
         let view = UIView()
         return view
     }()
+    
+    lazy var closeButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "multiply"), for: .normal)
+        view.tintColor = .black
+        view.addTarget(self, action: #selector(dismissPopup), for: .touchUpInside)
+        return view
+    }()
+    
+    func setLayout() {
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12).isActive = true
+        
+        scrollView.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setLayout()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    @objc func dismissPopup() {
+        view.backgroundColor = .clear
+        dismiss(animated: true)
+    }
+}
+
+class Popup: BasePopupViewController {
     
     lazy var titleLabel: UILabel = {
         let view = UILabel()
@@ -86,36 +138,21 @@ class ViewController: UIViewController {
         return view
     }()
     
-    lazy var closeButton: UIButton = {
-        let view = UIButton()
-        view.setImage(UIImage(systemName: "clear"), for: .normal)
-        view.tintColor = .black
-        return view
-    }()
+    static let shared = Popup()
+    
+    func showPopup() {
+        let detailVC = Popup()
+        detailVC.modalPresentationStyle = .overCurrentContext
+        present(detailVC, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black.withAlphaComponent(0.5)
-        setLayout()
+       
     }
     
-    
-    func setLayout() {
-        view.addSubview(scrollView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12).isActive = true
-        
-        scrollView.addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
-        
+    override func setLayout() {
+        super.setLayout()
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60).isActive = true
@@ -167,4 +204,3 @@ class ViewController: UIViewController {
         closeButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
     }
 }
-

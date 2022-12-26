@@ -191,6 +191,7 @@ class CustomAVPlayerLayer: UIView {
         
         player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { [weak self] time in
             guard let self = self, let currentItem = self.player?.currentItem else { return }
+            guard currentItem.duration >= .zero, !currentItem.duration.isIndefinite else { return }
             self.timeSlider.maximumValue = Float(currentItem.duration.seconds)
             self.timeSlider.minimumValue = 0
             self.timeSlider.value = Float(currentItem.currentTime().seconds)

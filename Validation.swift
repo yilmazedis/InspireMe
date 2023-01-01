@@ -7,7 +7,7 @@ class Validation {
         let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
         guard emailPred.evaluate(with: email) else {
-            // ToastPresenter.showWarningToast(text: "Lütfen geçerli bir email adresi giriniz.")
+            // print("Lütfen geçerli bir email adresi giriniz.")
             return false
         }
         return true
@@ -15,7 +15,7 @@ class Validation {
     
     func isValidPassword(_ password: String) -> Bool {
         guard password.count > 5 else {
-            // ToastPresenter.showWarningToast(text: "Şifreniz en az 6 karaterden oluşmalıdır.")
+            // print("Şifreniz en az 6 karaterden oluşmalıdır.")
             return false
         }
         return true

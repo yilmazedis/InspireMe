@@ -37,3 +37,20 @@ class SwipeToDeleteView: UIView {
         }
     }
 }
+
+
+
+@objc private func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+    let translation = gestureRecognizer.translation(in: self.view)
+    let location = gestureRecognizer.location(in: self.view)
+    let convertedLocation =  tableView.convert(location, from: self.view)
+
+    guard let cellPath = tableView.indexPathForRow(at: convertedLocation),
+          let visibleCells = tableView.indexPathsForVisibleRows,
+          let cell = tableView.cellForRow(at: visibleCells[cellPath.row]) else { return }
+
+    switch gestureRecognizer.state {
+        .....
+
+    }
+}

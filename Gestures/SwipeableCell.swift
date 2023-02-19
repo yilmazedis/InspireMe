@@ -174,3 +174,15 @@ class SwipeableCell: UITableViewCell {
         checkBox.isHidden = !readMode
     }
 }
+
+// you may need these statements.
+cell.deleteHandler = { [weak self] in
+    self?.deleteNotification(tableView: tableView, cell: cell)
+}
+
+private func deleteNotification(tableView: UITableView, cell: NotificationTableViewCell) {
+    let row = tableView.indexPath(for: cell)
+    output.deleteNotification(at: row?.row ?? 0)
+    let indexPath = IndexPath(item: row?.row ?? 0, section: 0)
+    tableView.deleteRows(at: [indexPath], with: .fade)
+}

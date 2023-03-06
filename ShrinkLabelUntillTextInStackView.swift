@@ -26,3 +26,7 @@ func UILabelWidthBasedOnTextLength(with label: UILabel) -> CGFloat? {
     $0.lineBreakMode = .byWordWrapping
     $0.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
 }
+
+
+let width = UIScreen.main.bounds.width
+let height = graceBannerLabel.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height

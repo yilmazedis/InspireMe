@@ -31,6 +31,10 @@ for shape in shapes {
     print(shape.area())
 }
 
+func printArea(of shape: Shape) {
+    print(shape)
+}
+
 /*
 
 In the above example, the area method is called on the elements of the shapes array, which is of type [Shape]. Since the type of the elements is not known at compile time, Swift uses dynamic dispatch to call the appropriate implementation of area() method at runtime.

@@ -100,6 +100,12 @@ func printLeafValues(in tree: BinaryTree) {
     }
 }
 
+//Indirect enum
+if case BinaryTree.leaf(let result) = updatedTree {
+    print("Previous Result: \(result)")
+}
+
+
 /*
 
 This function also uses a recursive approach. It checks the current node's case. If the current node is a leaf node, it prints the value of the node. If the current node is an internal node, it recursively calls the function on the left and right children. This way the function will visit all the leaf nodes in the tree and print their values.

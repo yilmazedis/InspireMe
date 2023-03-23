@@ -1,0 +1,9 @@
+let cache = URLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "myCachePath")
+let configuration = URLSessionConfiguration.default
+configuration.urlCache = cache
+
+let manager = Alamofire.Session(configuration: configuration)
+
+manager.request("https://example.com/data").responseJSON { response in
+    // Handle response
+}

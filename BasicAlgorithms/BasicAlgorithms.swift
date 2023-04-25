@@ -29,6 +29,8 @@ func superDigit(n: String, k: Int) -> Int {
     return superDigit(n: String(sum), k: 1)
 }
 
+////////////////////////////////////////////////////////////
+// @autoclosure
 var ele = 0
 
 func foo(para: @autoclosure () -> (Int)) {
@@ -42,3 +44,14 @@ print(ele)
 // prints
 // 0
 // 10
+
+////////////////////////////////////////////////////////////
+// Type Inferred
+// let val1: Result<Int, Never> = .success(10)
+// Int Success == Int inferred
+let val1: Result<_, Never> = .success(10)
+
+// let compiler to help you to decide type when it become more and more complex
+let val2: Result<_, Never> = .success(
+    [1: ["o", "n", "e"]]
+)

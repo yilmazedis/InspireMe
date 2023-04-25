@@ -28,3 +28,17 @@ func superDigit(n: String, k: Int) -> Int {
     let sum = n.compactMap(\.wholeNumberValue).reduce(0, +) * k
     return superDigit(n: String(sum), k: 1)
 }
+
+var ele = 0
+
+func foo(para: @autoclosure () -> (Int)) {
+    ele = para()
+}
+
+print(ele)
+foo(para: 10)
+print(ele)
+
+// prints
+// 0
+// 10

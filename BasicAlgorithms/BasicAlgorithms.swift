@@ -55,3 +55,12 @@ let val1: Result<_, Never> = .success(10)
 let val2: Result<_, Never> = .success(
     [1: ["o", "n", "e"]]
 )
+
+////////////////////////////////////////////////////////////
+// private(set) for lazy properties
+// Unfortunately, it's not possible for a `lazy` property to also be a `let` constant 😢
+// But that's when the keyword `private(set)` comes to the rescue, to at least make the setter of the property inaccessible 😌
+private lazy var myView: UIView = {
+    let view = UIView()
+    return view
+}()

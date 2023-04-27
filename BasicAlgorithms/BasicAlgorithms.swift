@@ -64,3 +64,16 @@ private lazy var myView: UIView = {
     let view = UIView()
     return view
 }()
+
+////////////////////////////////////////////////////////////
+// willSet with struct
+struct Spaceship {
+    var name: String {
+        willSet {
+            print("I'm called \(newValue)!")
+        }
+    }
+}
+
+var serenity = Spaceship(name: "Serenity")
+serenity.name = "TARDIS"

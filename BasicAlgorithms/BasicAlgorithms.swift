@@ -77,3 +77,11 @@ struct Spaceship {
 
 var serenity = Spaceship(name: "Serenity")
 serenity.name = "TARDIS"
+
+////////////////////////////////////////////////////////////
+// Go to subscriptions page
+if let url = URL(string: "itms-apps://apps.apple.com/account/subscriptions") {
+    if UIApplication.shared.canOpenURL(url) {
+        UIApplication.shared.open(url, options: [:])
+    }
+}

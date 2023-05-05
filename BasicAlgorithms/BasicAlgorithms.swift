@@ -77,6 +77,9 @@ struct Spaceship {
 
 var serenity = Spaceship(name: "Serenity")
 serenity.name = "TARDIS"
+// Correct answer: "I'm called TARDIS!".
+// Explanation: The willSet property observer is triggered only when the initial value is changed, 
+// and not when the struct is created using memberwise initialization.
 
 ////////////////////////////////////////////////////////////
 // Go to subscriptions page

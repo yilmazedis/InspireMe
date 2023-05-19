@@ -88,3 +88,24 @@ if let url = URL(string: "itms-apps://apps.apple.com/account/subscriptions") {
         UIApplication.shared.open(url, options: [:])
     }
 }
+
+////////////////////////////////////////////////////////////
+// final example
+final class Dog {
+    func bark() {
+        print("Woof!")
+    }
+}
+
+class Corgi : Dog {
+    override func bark() {
+        print("Yip!")
+    }
+}
+
+let muttface = Corgi()
+muttface.bark()
+// Correct answer: This code will not compile.
+// Explanation: This code attempts to create a new class, Corgi, that inherits from an existing class, Dog. 
+// Ordinarily that would be fine, but here the Dog class has been marked as final, which means it cannot be inherited from
+

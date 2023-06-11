@@ -29,3 +29,13 @@ if userPermissions.contains(.execute) {
 // Adding and removing permissions
 userPermissions.insert(.execute)
 userPermissions.remove(.read)
+
+// here it is 5.9 with swift macro
+@OptionSet<Int>
+struct SundaeToppings {
+    private enum Options: Int {
+        case nuts
+        case cherry
+        case fudge
+    }
+}

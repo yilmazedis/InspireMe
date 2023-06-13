@@ -109,3 +109,25 @@ muttface.bark()
 // Explanation: This code attempts to create a new class, Corgi, that inherits from an existing class, Dog. 
 // Ordinarily that would be fine, but here the Dog class has been marked as final, which means it cannot be inherited from
 
+In Swift, the ~= operator is known as the "pattern matching operator." It is used to check if a value matches a pattern.
+
+Here's an example of how the ~= operator can be used:
+
+
+////////////////////////////////////////////////////////////
+// ~= operator
+let number = 5
+switch number {
+case 1...10:
+    print("The number is between 1 and 10.")
+case 11...20:
+    print("The number is between 11 and 20.")
+default:
+    print("The number doesn't match any specific range.")
+}
+
+// In the example above, the ~= operator is implicitly used in the case statements of a switch statement to check if the number falls within a specific range. 
+// The operator compares the value on the left side (number) with the pattern on the right side (1...10 and 11...20) to determine if there is a match.
+// Note that the ~= operator is primarily used internally by Swift's pattern matching system and is not commonly used directly in regular code.
+
+

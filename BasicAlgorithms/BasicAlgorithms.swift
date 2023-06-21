@@ -130,4 +130,14 @@ default:
 // The operator compares the value on the left side (number) with the pattern on the right side (1...10 and 11...20) to determine if there is a match.
 // Note that the ~= operator is primarily used internally by Swift's pattern matching system and is not commonly used directly in regular code.
 
+////////////////////////////////////////////////////////////
+// Nubers definitions
+let oneMillion = 1_000_000
+let oneThousand = oneMillion / 0_1_0_0_0
+print(oneThousand)
+
+// Correct answer: 1000.
+// Explanation: Swift allows you to use any number of leading zeroes before a number, 
+// and any number of underscores inside a number, in order to make reading easier. 
+// The example given, 0_1_0_0_0, is unlikely, but a perfectly valid way to write 1000.
 

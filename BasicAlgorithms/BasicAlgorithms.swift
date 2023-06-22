@@ -141,3 +141,12 @@ print(oneThousand)
 // and any number of underscores inside a number, in order to make reading easier. 
 // The example given, 0_1_0_0_0, is unlikely, but a perfectly valid way to write 1000.
 
+
+////////////////////////////////////////////////////////////
+// Compiler Directive
+// The Swift compiler directive that will force the compiler to issue an error is #error.
+#if DEBUG
+    // Perform debug-only operations here
+#else
+    #error("DEBUG flag not set")
+#endif

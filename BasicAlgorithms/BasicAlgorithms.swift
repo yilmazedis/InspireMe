@@ -150,3 +150,15 @@ print(oneThousand)
 #else
     #error("DEBUG flag not set")
 #endif
+
+
+////////////////////////////////////////////////////////////
+// Flat Map
+let numbers = [1, 2, 3].flatMap { [$0, $0] }
+
+// Correct answer: [1, 1, 2, 2, 3, 3].
+// Explanation: A call to map code would loop over every number in the numbers array, 
+// and creates a new array for each number that contains that number twice. 
+// So, 1 will be converted to [1, 1] and so on. In this case, we're using flatMap, 
+// which causes the resulting array of arrays to be flattened to a single array, 
+// meaning that [[1, 1]] would become [1, 1] and so on

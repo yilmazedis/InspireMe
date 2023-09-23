@@ -11,3 +11,21 @@ class MyClass {
         }
     }
 }
+
+// Example 2: Struct with Subscript
+struct MyStruct {
+    private var data: [Int] = []
+    
+    subscript(index: Int) -> Int {
+        get {
+            return data[index]
+        }
+        set(newValue) {
+            if index < data.count {
+                data[index] = newValue
+            } else {
+                data.append(newValue)
+            }
+        }
+    }
+}

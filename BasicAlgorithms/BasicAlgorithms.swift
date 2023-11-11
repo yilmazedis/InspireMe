@@ -162,3 +162,15 @@ let numbers = [1, 2, 3].flatMap { [$0, $0] }
 // So, 1 will be converted to [1, 1] and so on. In this case, we're using flatMap, 
 // which causes the resulting array of arrays to be flattened to a single array, 
 // meaning that [[1, 1]] would become [1, 1] and so on
+
+////////////////////////////////////////////////////////////
+// Generic
+func square<T>(_ value: T) -> T {
+    return value * value
+}
+
+//Correct answer: This code will not compile.
+//Explanation: This code has attempted to create a generic number squaring function, 
+// but has failed to declare that T (the data type being used) has the ability to work with the * operator, 
+// so Swift cannot compile it. One solution might be to modify it to square<T: BinaryInteger>, 
+// which would allow it to work on Int, UInt, Int64 and so on.

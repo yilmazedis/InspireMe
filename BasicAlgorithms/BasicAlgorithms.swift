@@ -174,3 +174,16 @@ func square<T>(_ value: T) -> T {
 // but has failed to declare that T (the data type being used) has the ability to work with the * operator, 
 // so Swift cannot compile it. One solution might be to modify it to square<T: BinaryInteger>, 
 // which would allow it to work on Int, UInt, Int64 and so on.
+
+////////////////////////////////////////////////////////////
+// String
+let string: String = String(describing: String.self)
+print(string)
+/*
+Correct answer: "String".
+
+Explanation: Among the many constructors for strings is one that lets you pass in a 
+class to have the string set to the name of that class. That is, 
+String(describing: String.self) means "create a string out of the name of the String class." 
+This is equivalent to the NSStringFromClass() function that Objective-C developers often use.
+*/

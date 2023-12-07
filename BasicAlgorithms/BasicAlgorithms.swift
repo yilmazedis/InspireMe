@@ -187,3 +187,20 @@ class to have the string set to the name of that class. That is,
 String(describing: String.self) means "create a string out of the name of the String class." 
 This is equivalent to the NSStringFromClass() function that Objective-C developers often use.
 */
+
+////////////////////////////////////////////////////////////
+// loop
+let data: [Any?] = ["Bill", nil, 69, "Ted"]
+
+for datum in data where datum is String? {
+    print(datum)
+}
+
+for case let .some(datum) in data where datum is String {
+    print(datum)
+}
+/*
+Correct answer: The first loop prints more lines than the second.
+
+Explanation: There is a very subtle difference between the two loops, and it's triggered by the data type of the array: this is an array of Any? not an array of strings. The first loop will attempt to typecast its items as String?, which means the loop element must either be a string or nil – that's true of three items. The second loop, however, begins by unwrapping the optional, so it will either be Any or String, at which point our where clause will work. So, the second loop prints two lines.
+*/

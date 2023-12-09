@@ -204,3 +204,15 @@ Correct answer: The first loop prints more lines than the second.
 
 Explanation: There is a very subtle difference between the two loops, and it's triggered by the data type of the array: this is an array of Any? not an array of strings. The first loop will attempt to typecast its items as String?, which means the loop element must either be a string or nil – that's true of three items. The second loop, however, begins by unwrapping the optional, so it will either be Any or String, at which point our where clause will work. So, the second loop prints two lines.
 */
+
+////////////////////////////////////////////////////////////
+// Optional
+let names: [String?] = ["Barbara", nil, "Janet", nil, "Peter", nil, "George"]
+
+if let firstName = names.first {
+    print(firstName)
+}
+/*
+Correct answer: Optional("Barbara").
+Explanation: The names array contains values of type String?, but names.first adds an extra level of optionality because it will return nil if there are no items in the array. So, in this code names.first will return String?? (an optional optional String), of which one layer is unwrapped using the if let.
+*/

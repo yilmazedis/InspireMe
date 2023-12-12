@@ -216,3 +216,16 @@ if let firstName = names.first {
 Correct answer: Optional("Barbara").
 Explanation: The names array contains values of type String?, but names.first adds an extra level of optionality because it will return nil if there are no items in the array. So, in this code names.first will return String?? (an optional optional String), of which one layer is unwrapped using the if let.
 */
+
+////////////////////////////////////////////////////////////
+// Array
+var names = [String]()
+names.append("Amy")
+let example1 = names.removeLast()
+let example2 = names.removeLast()
+
+/*
+Correct answer: This code will compile but crash.
+
+Explanation: The removeLast() method returns the same data type as the array contains, which in this code is a String. As the only string in the array was already removed, the second call will throw an exception and crash.
+*/

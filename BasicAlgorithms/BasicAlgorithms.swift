@@ -229,3 +229,12 @@ Correct answer: This code will compile but crash.
 
 Explanation: The removeLast() method returns the same data type as the array contains, which in this code is a String. As the only string in the array was already removed, the second call will throw an exception and crash.
 */
+
+////////////////////////////////////////////////////////////
+// Result
+let result = Result { try String(contentsOfFile: pathToFileThatDoesNotExist) }
+/*
+Correct answer: .failure(Error).
+
+Explanation: This uses a Result initializer that accepts a throwing function. In this instance, the function call will throw an error, causing result to be set to .failure with an Error value saying that the filename is invalid.
+*/

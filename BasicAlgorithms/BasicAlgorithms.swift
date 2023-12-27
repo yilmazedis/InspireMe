@@ -109,9 +109,8 @@ muttface.bark()
 // Explanation: This code attempts to create a new class, Corgi, that inherits from an existing class, Dog. 
 // Ordinarily that would be fine, but here the Dog class has been marked as final, which means it cannot be inherited from
 
-In Swift, the ~= operator is known as the "pattern matching operator." It is used to check if a value matches a pattern.
-
-Here's an example of how the ~= operator can be used:
+// In Swift, the ~= operator is known as the "pattern matching operator." It is used to check if a value matches a pattern.
+// Here's an example of how the ~= operator can be used:
 
 
 ////////////////////////////////////////////////////////////

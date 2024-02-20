@@ -162,6 +162,20 @@ let numbers = [1, 2, 3].flatMap { [$0, $0] }
 // which causes the resulting array of arrays to be flattened to a single array, 
 // meaning that [[1, 1]] would become [1, 1] and so on
 
+let flat_1 = [[[2]], [[2]], [[2]], [[2]], [[2]]].flatMap { $0.flatMap { $0} }
+// let flat_2 = [1, 2, 3].flatMap { [$0, $0] }
+let flat_2 = [[1, 2], [3, 4], [5, 6]].flatMap { $0 }
+
+print(flat_1) // [2, 2, 2, 2, 2]
+print(flat_2) // [1, 2, 3, 4, 5, 6]
+
+// flatMap just decrease 1 level of dimension array.
+let flat_1 = [[[2]], [[2]], [[2]], [[2]], [[2]]].flatMap { $0 } // [[2], [2], [2], [2], [2]]
+
+// Array must be in same level of elements, I mean if there is another level of element like 1 in example below, flatMap
+// won't work as espected.
+let flat_1 = [1, [[2]], [[2]], [[2]], [[2]], [[2]]].flatMap { $0 } // [1, [[2]], [[2]], [[2]], [[2]], [[2]]]
+
 ////////////////////////////////////////////////////////////
 // Generic
 func square<T>(_ value: T) -> T {

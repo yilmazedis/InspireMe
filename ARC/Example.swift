@@ -159,3 +159,54 @@ john!.creditCard = CreditCard(number: 1234_5678_9012_3456, customer: john!) // U
 
 john = nil // Deinitializes Customer and CreditCard
 
+// Strong Referance Example
+class Person {
+    var name = "Yilmaz"
+    
+    deinit {
+        print("Person is deinitialized")
+    }
+}
+
+let person1 = Person()
+let person2 = person1
+let person3 = person2
+
+person1.name = "ChatGPT"
+person1.name
+person2.name
+person3.name
+
+// To trigger the deinitialization and print the message
+// var person1: Person? = Person() // Make person1 an optional
+// person1 = nil
+// person2 = nil
+// person3 = nil
+
+Task {
+    let person1 = Person()
+    let person2 = person1
+    let person3 = person2
+
+    person1.name = "ChatGPT"
+    person1.name
+    person2.name
+    person3.name
+    // deinit will call one time after all strong referances go.
+}
+
+Task {
+    let person1 = Person()
+    let person2 = person1
+    
+    Task {
+        let person3 = person2
+        person3.name
+        // here deinit wont call, beacuse person1 is still exist.
+    }
+
+    person1.name = "ChatGPT"
+    person1.name
+    person2.name
+}
+
